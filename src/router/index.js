@@ -8,7 +8,7 @@ import Restaurants from "../views/Restaurants.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/", name: "root", redirect: "/restaurants" },
+  { path: "/", name: "root", redirect: "/signin" },
   { path: "/signin", name: "sign-in", component: SignIn },
   { path: "/signup", name: "sign-up", component: SignUp },
   { path: "/restaurants", name: "restaurants", component: Restaurants },

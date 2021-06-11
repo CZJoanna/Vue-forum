@@ -8,7 +8,7 @@
       <div class="form-label-group mb-2">
         <label for="email">email</label>
         <input
-        v-model.trim="email"
+          v-model.trim="email"
           id="email"
           name="email"
           type="email"
@@ -23,7 +23,7 @@
       <div class="form-label-group mb-3">
         <label for="password">Password</label>
         <input
-        v-model="password"
+          v-model="password"
           id="password"
           name="password"
           type="password"
@@ -34,8 +34,7 @@
         />
       </div>
 
-      <button class="btn btn-lg btn-primary btn-block mb-3" 
-      type="submit">
+      <button class="btn btn-lg btn-primary btn-block mb-3" type="submit">
         Submit
       </button>
 
@@ -51,25 +50,34 @@
 </template>
 
 <script>
+import authorizationAPI from "../apis/authorization";
+
 export default {
   name: "SignIn",
   data() {
-      return {
-          email:'',
-          password:''
-      }
+    return {
+      email: "",
+      password: "",
+    };
   },
-  methods:{
-      handleSubmit(){
-           const data = JSON.stringify({
-        email: this.email,
-        password: this.password
-      })
-
-      // TODO: 向後端驗證使用者登入資訊是否合法
-      console.log('data', data)
-      }
-  }
+  methods: {
+    handleSubmit() {
+      authorizationAPI
+        .signIn({
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          const { data } = res;
+            // 取得 API 請求後的資料
+          console.log(data);
+           // 將 token 存放在 localStorage 內
+          localStorage.setItem("token",data.token);
+           // 成功登入後轉址到餐廳首頁
+          this.$router.push("/restaurants")
+        });
+    },
+  },
 };
 </script>
 
