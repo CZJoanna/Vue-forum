@@ -11,13 +11,12 @@
           aria-label="Previous"
           :to="{
             name: 'restaurants',
-            query: { categoryId, page: previousPage }
+            query: { categoryId, page: previousPage },
           }"
         >
           <span aria-hidden="true">&laquo;</span>
         </router-link>
       </li>
-
 
       <!-- 頁碼 -->
       <li
@@ -27,7 +26,7 @@
       >
         <router-link
           class="page-link"
-          :to="{name: 'restaurants', query: { categoryId, page }}"
+          :to="{ name: 'restaurants', query: { categoryId, page } }"
         >
           {{ page }}
         </router-link>
@@ -46,13 +45,13 @@
           <span aria-hidden="true">&raquo;</span>
         </router-link>
       </li>
-
     </ul>
   </nav>
 </template>
 
 <script>
 export default {
+  name: "RestaurantsPagination",
   props: {
     currentPage: {
       type: Number,

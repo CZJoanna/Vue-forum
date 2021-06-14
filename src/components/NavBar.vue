@@ -1,11 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <router-link
-      class="navbar-brand"
-      to="/"
-    >
-      餐廳評論網
-    </router-link>
+    <router-link class="navbar-brand" to="/"> 餐廳評論網 </router-link>
 
     <button
       class="navbar-toggler"
@@ -19,32 +14,21 @@
       <span class="navbar-toggler-icon" />
     </button>
 
-    <div
-      id="navbarSupportedContent" 
-      class="navbar-collapse collapse"
-    >
+    <div id="navbarSupportedContent" class="navbar-collapse collapse">
       <div class="ml-auto d-flex align-items-center">
         <!-- is user is admin -->
-        <router-link
-             to="#" 
-             class="text-white mr-3"
-        >
-         管理員後台
-       </router-link>
+        <router-link to="#" class="text-white mr-3"> 管理員後台 </router-link>
 
         <!-- is user is login -->
-          <router-link
-             to="#" 
-             class="text-white mr-3"
-          > 
-           {{currentUser.name||'guest'}} 您好
-         </router-link>
-         <button
-           type="button" 
-           class="btn btn-sm btn-outline-success my-2 my-sm-0"
-          >
-           登出
-          </button>
+        <router-link to="#" class="text-white mr-3">
+          {{ currentUser.name || "guest" }} 您好
+        </router-link>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-success my-2 my-sm-0"
+        >
+          登出
+        </button>
       </div>
     </div>
   </nav>
@@ -64,18 +48,20 @@
 // }
 
 export default {
+  name: "NavBar",
   // Vue 會在沒有資料時使用此預設值
-  data () {
+  data() {
     return {
       currentUser: {
         id: -1,
-        name: '',
-        email: '',
-        image: '',
-        isAdmin: false
+        name: "",
+        email: "",
+        image: "",
+        isAdmin: false,
       },
-      isAuthenticated: false
-    }
-  }
-}
+      isAuthenticated: false,
+    };
+  },
+};
 </script>
+

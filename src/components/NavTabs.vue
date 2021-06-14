@@ -1,7 +1,9 @@
 <template>
   <ul class="nav nav-tabs mb-4">
     <li class="nav-item" v-for="tab in tabs" :key="tab.id">
-      <router-link :to= "tab.path" class="nav-link"> {{tab.title}} </router-link>
+      <router-link :to="tab.path" class="nav-link">
+        {{ tab.title }}
+      </router-link>
     </li>
     <!-- <li class="nav-item">
       <router-link
@@ -40,6 +42,7 @@
 <script>
 import { v4 as uuidv4 } from "uuid";
 export default {
+  name: "NavTabs",
   data() {
     return {
       tabs: [
