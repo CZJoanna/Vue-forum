@@ -10,8 +10,10 @@
       @after-delete-comment="afterDeleteComment"
     />
     <!-- 新增評論 CreateComment -->
-    <CreateComment :restaurant-id="restaurant.id"
-    @after-create-comment="afterCreateComment"/>
+    <CreateComment
+      :restaurant-id="restaurant.id"
+      @after-create-comment="afterCreateComment"
+    />
   </div>
 </template>
 
@@ -23,13 +25,13 @@ import CreateComment from "../components/CreateComment";
 const dummyUser = {
   currentUser: {
     id: 1,
-    name: '管理者',
-    email: 'root@example.com',
-    image: 'https://i.pravatar.cc/300',
-    isAdmin: true
+    name: "管理者",
+    email: "root@example.com",
+    image: "https://i.pravatar.cc/300",
+    isAdmin: true,
   },
-  isAuthenticated: true
-}
+  isAuthenticated: true,
+};
 
 const dummyData = {
   restaurant: {
@@ -230,7 +232,7 @@ export default {
         isLiked: false,
       },
       restaurantComments: [],
-      currentUser:dummyUser.currentUser,
+      currentUser: dummyUser.currentUser,
     };
   },
   created() {
@@ -240,18 +242,30 @@ export default {
   methods: {
     fetchRestaurant(restaurantId) {
       console.log("fetchRestaurant id: ", restaurantId);
+      const {
+        id,
+        name,
+        categoryName,
+        image,
+        openingHours,
+        tel,
+        address,
+        description,
+        isFavorited,
+        isLiked,
+      } = dummyData.restaurant;
 
       this.restaurant = {
-        id: dummyData.restaurant.id,
-        name: dummyData.restaurant.name,
-        categoryName: dummyData.restaurant.categoryName,
-        image: dummyData.restaurant.image,
-        openingHours: dummyData.restaurant.opening_hours,
-        tel: dummyData.restaurant.tel,
-        address: dummyData.restaurant.address,
-        description: dummyData.restaurant.description,
-        isFavorited: dummyData.isFavorited,
-        isLiked: dummyData.isLiked,
+        id,
+        name,
+        categoryName,
+        image,
+        openingHours,
+        tel,
+        address,
+        description,
+        isFavorited,
+        isLiked,
       };
       this.restaurantComments = dummyData.restaurant.Comments;
     },
@@ -262,19 +276,18 @@ export default {
       );
     },
     afterCreateComment(payload) {
-      const {commentId,restaurantId, commentText} = payload;
+      const { commentId, restaurantId, commentText } = payload;
       this.restaurantComments.push({
         id: commentId,
         RestaurantId: restaurantId,
         User: {
           id: this.currentUser.id,
-          name: this.currentUser.name
+          name: this.currentUser.name,
         },
-        text:commentText,
-        createdAt: new Date()
-      })
-
-    }
+        text: commentText,
+        createdAt: new Date(),
+      });
+    },
   },
 };
 </script>

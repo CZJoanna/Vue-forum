@@ -43,6 +43,7 @@ export default {
       // TODO: 向 API 發送 POST 請求
       // 伺服器新增 Comment 成功後...
       //通知父元件資料變化
+
       this.$emit("after-create-comment", {
         commentId: uuidv4(), // 尚未串接 API 暫時使用隨機的 id
         restaurantId: this.restaurantId,

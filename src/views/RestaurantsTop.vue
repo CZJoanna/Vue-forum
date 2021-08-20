@@ -13,10 +13,7 @@
       <div class="row no-gutters">
         <div class="col-md-4">
           <a href="#">
-            <img
-              class="card-img"
-              src="https://loremflickr.com/320/240/food,dessert,restaurant/?random=2"
-            />
+            <img class="card-img" :src="restaurant.image" />
           </a>
         </div>
         <div class="col-md-8">
@@ -459,18 +456,17 @@ export default {
     },
     addFavorite(e) {
       // console.log(typeof e);
-      this.restaurants.forEach((restaurant)=>{
-        if( e === restaurant.id){
-          // console.log(typeof restaurant.id)
-          restaurant.isFavorited = true
-           restaurant.FavoriteCount += 1;
+      this.restaurants.forEach((restaurant) => {
+        if (e === restaurant.id) {
+          restaurant.isFavorited = true;
+          restaurant.FavoriteCount += 1;
         }
       });
     },
     deleteFavorite(e) {
       // console.log(e);
-       this.restaurants.forEach((restaurant)=>{
-        if( e === restaurant.id){
+      this.restaurants.forEach((restaurant) => {
+        if (e === restaurant.id) {
           restaurant.isFavorited = false;
           restaurant.FavoriteCount -= 1;
         }
