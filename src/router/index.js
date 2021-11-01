@@ -15,38 +15,52 @@ const routes = [
   {
     path: "/admin/restaurants",
     name: "admin-restaurants",
-    component: () => import("../views/AdminRestaurants.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "admin-restaurants" */ "../views/AdminRestaurants.vue"
+      ),
   },
   {
     path: "/restaurants/feeds",
     name: "restaurants-feeds",
-    component: () => import("../views/RestaurantsFeeds.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "restaurants-feeds" */ "../views/RestaurantsFeeds.vue"
+      ),
   },
   {
     path: "/restaurants/top",
     name: "restaurants-tops",
-    component: () => import("../views/RestaurantsTop.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "restaurants-tops" */ "../views/RestaurantsTop.vue"
+      ),
   },
   {
     path: "/restaurants/:id",
     name: "restaurant",
-    component: () => import("../views/Restaurant.vue"),
+    component: () =>
+      import(/* webpackChunkName: "restaurant" */ "../views/Restaurant.vue"),
   },
   {
     path: "/restaurants/:id/dashboard",
     name: "restaurant-dashboard",
-    component: () => import("../views/RestaurantDashboard.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "restaurant-dashboard" */ "../views/RestaurantDashboard.vue"
+      ),
   },
   { path: "/admin", exact: true, redirect: "/admin/restaurants" },
   {
     path: "/users/top",
     name: "users-top",
-    component: () => import("../views/UsersTop.vue"),
+    component: () =>
+      import(/* webpackChunkName: "users-top" */ "../views/UsersTop.vue"),
   },
   {
     path: "/users/:id",
     name: "user",
-    component: () => import("../views/User.vue"),
+    component: () => import(/* webpackChunkName: "use" */ "../views/User.vue"),
   },
   {
     path: "*",

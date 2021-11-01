@@ -3,14 +3,18 @@
     <NavTabs />
     <h1 class="mt-5">美食達人</h1>
     <hr />
-    <div class="row text-center">
-      <div class="col-3" v-for="user in users" :key="user.id">
+    <div class="row">
+      <div
+        class="col-sm-6 col-md-4 col-lg-3"
+        v-for="user in users"
+        :key="user.id"
+      >
         <a href="#">
           <img :src="user.image" width="140px" height="140px" />
         </a>
-        <h2>{{ User }}</h2>
+        <h4>{{ user.name }}</h4>
         <span class="badge badge-secondary"
-          >追蹤人數：{{ user.FollowerCount }}</span
+          >追蹤人數：{{ user.followerCount }}</span
         >
         <p class="mt-3">
           <button
@@ -191,7 +195,15 @@ export default {
   },
   methods: {
     fetchData() {
-      this.users = dummyData.users;
+      // const { users } = dummyData;
+      // this.users = [...users];
+      this.users = dummyData.users.map((user) => ({
+        id: user.id,
+        name: user.name,
+        image: user.image,
+        followerCount: user.FollowerCount,
+        isFollowed: user.isFollowed,
+      }));
     },
     deleteFollow(e) {
       this.users.forEach((user) => {
@@ -202,7 +214,7 @@ export default {
       });
     },
     addFollow(e) {
-       this.users.forEach((user) => {
+      this.users.forEach((user) => {
         if (e === user.id) {
           user.isFollowed = true;
           user.FollowerCount += 1;
